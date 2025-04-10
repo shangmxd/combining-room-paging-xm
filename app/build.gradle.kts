@@ -3,6 +3,8 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    id("androidx.navigation.safeargs.kotlin")
+
 }
 
 android {
@@ -39,6 +41,10 @@ android {
     kapt {
         correctErrorTypes = true
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -70,4 +76,14 @@ dependencies {
 
     //LiveData Dependencies
     implementation("androidx.lifecycle:lifecycle-livedata:2.8.7")
+
+    //Navigation Dependencies
+    implementation("androidx.navigation:navigation-fragment:2.8.9")
+    implementation("androidx.navigation:navigation-ui:2.8.9")
+
+    //Coil Dependencies
+    implementation("io.coil-kt:coil:0.9.1")
+
+    //Fragment Dependencies
+    implementation("androidx.fragment:fragment-ktx:1.8.6")
 }

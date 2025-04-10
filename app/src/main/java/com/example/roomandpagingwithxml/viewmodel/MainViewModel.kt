@@ -8,8 +8,10 @@ import androidx.paging.cachedIn
 import androidx.paging.liveData
 import com.example.roomandpagingwithxml.model.MangaPagingSource
 import com.example.roomandpagingwithxml.model.MangaService
+import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
+@HiltViewModel
 class MainViewModel @Inject constructor(private val mangaService: MangaService):ViewModel() {
 
     val mangaResponse = Pager(
