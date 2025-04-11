@@ -2,8 +2,10 @@ package com.example.roomandpagingwithxml.di
 
 import android.content.Context
 import androidx.room.Room
+import androidx.room.TypeConverters
 import com.example.roomandpagingwithxml.database.MangaDao
 import com.example.roomandpagingwithxml.database.MangaDatabase
+import com.example.roomandpagingwithxml.database.converters.Converters
 import com.example.roomandpagingwithxml.repository.MangaRepository
 import dagger.Module
 import dagger.Provides

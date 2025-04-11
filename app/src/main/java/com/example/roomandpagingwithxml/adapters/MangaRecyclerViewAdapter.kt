@@ -1,6 +1,5 @@
 package com.example.roomandpagingwithxml.adapters
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,9 +8,7 @@ import android.widget.TextView
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import coil.Coil
-import coil.ImageLoader
-import coil.api.load
+import coil.load
 import com.example.roomandpagingwithxml.R
 import com.example.roomandpagingwithxml.data.Manga
 import com.example.roomandpagingwithxml.utils.RecyclerViewInterface

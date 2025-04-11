@@ -19,6 +19,8 @@ import com.example.roomandpagingwithxml.repository.MangaPagingSource
 import com.example.roomandpagingwithxml.model.MangaService
 import com.example.roomandpagingwithxml.repository.MangaRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -26,7 +28,7 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(
     private val mangaService: MangaService,
     private val mangaRepository: MangaRepository,
-    private val context: Context
+    @ApplicationContext private val context: Context
 ) : ViewModel() {
 
     val savedManga = viewModelScope.launch {
@@ -45,7 +47,7 @@ class MainViewModel @Inject constructor(
         }
     }
     fun saveManga(manga: Manga){
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             val mangaCover = convertImageURLtoBimap(manga.images.jpg.image_url)
             mangaRepository.addManga(manga.toMangaDataClass(mangaCover!!))
         }

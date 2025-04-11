@@ -5,17 +5,19 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
+import androidx.room.Query
 import com.example.roomandpagingwithxml.database.data.MangaData
 
 @Dao
 interface MangaDao {
 
-    suspend fun getAllSavedMangas():LiveData<List<MangaData>>
+    @Query("SELECT *FROM MangaData")
+    fun getAllSavedMangas():LiveData<List<MangaData>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertManga(mangaData: MangaData)
+    fun insertManga(mangaData: MangaData)
 
     @Delete
-    suspend fun deleteMangaFromSaved(manga: MangaData)
+    fun deleteMangaFromSaved(manga: MangaData)
 
 }
