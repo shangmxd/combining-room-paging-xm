@@ -1,5 +1,6 @@
 package com.example.roomandpagingwithxml.adapters
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,11 +9,20 @@ import android.widget.TextView
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import coil.Coil
+import coil.ImageLoader
 import coil.api.load
 import com.example.roomandpagingwithxml.R
 import com.example.roomandpagingwithxml.data.Manga
+import com.example.roomandpagingwithxml.utils.RecyclerViewInterface
 
-class MangaRecyclerViewAdapter:PagingDataAdapter<Manga,MangaRecyclerViewAdapter.MyViewHolder>(simpleDiffCallback) {
+class MangaRecyclerViewAdapter(recyclerViewClickInterface: RecyclerViewInterface):PagingDataAdapter<Manga,MangaRecyclerViewAdapter.MyViewHolder>(simpleDiffCallback) {
+
+    private var recyclerViewInterface:RecyclerViewInterface
+
+    init {
+        this.recyclerViewInterface = recyclerViewClickInterface
+    }
 
     companion object {
         val simpleDiffCallback = object :DiffUtil.ItemCallback<Manga>() {
@@ -23,7 +33,6 @@ class MangaRecyclerViewAdapter:PagingDataAdapter<Manga,MangaRecyclerViewAdapter.
             override fun areContentsTheSame(oldItem: Manga, newItem: Manga): Boolean {
                 return oldItem == newItem
             }
-
         }
     }
 
@@ -41,6 +50,9 @@ class MangaRecyclerViewAdapter:PagingDataAdapter<Manga,MangaRecyclerViewAdapter.
         holder.itemView.findViewById<TextView>(R.id.chapters_tv).text = "Chapters: ${(currentItem?.chapters?:"unavailable")}"
         holder.itemView.findViewById<TextView>(R.id.score_tv).text = "Score: ${currentItem?.score?:0}"
         holder.itemView.findViewById<ImageView>(R.id.manga_iv).load(currentItem?.images?.jpg?.image_url)
+        holder.itemView.findViewById<ImageView>(R.id.save_iv).setOnClickListener {
+            recyclerViewInterface.onSaveClicked(currentItem?:null)
+        }
     }
 
 }

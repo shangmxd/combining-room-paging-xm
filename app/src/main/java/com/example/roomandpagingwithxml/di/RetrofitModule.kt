@@ -1,6 +1,9 @@
 package com.example.roomandpagingwithxml.di
 
+import com.example.roomandpagingwithxml.database.MangaDao
+import com.example.roomandpagingwithxml.database.MangaDatabase
 import com.example.roomandpagingwithxml.model.MangaService
+import com.example.roomandpagingwithxml.repository.MangaRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -82,8 +82,14 @@ dependencies {
     implementation("androidx.navigation:navigation-ui:2.8.9")
 
     //Coil Dependencies
-    implementation("io.coil-kt:coil:0.9.1")
+    implementation("io.coil-kt:coil:2.2.0")
 
     //Fragment Dependencies
     implementation("androidx.fragment:fragment-ktx:1.8.6")
+
+    //Room Dependencies
+    implementation("androidx.room:room-runtime:2.4.0")
+    kapt("androidx.room:room-compiler:2.4.0")
+    implementation("androidx.room:room-ktx:2.4.0")
+
 }

@@ -1,8 +1,9 @@
-package com.example.roomandpagingwithxml.model
+package com.example.roomandpagingwithxml.repository
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.roomandpagingwithxml.data.Manga
+import com.example.roomandpagingwithxml.model.MangaService
 import java.lang.Exception
 
 class MangaPagingSource(private val mangaService: MangaService) : PagingSource<Int, Manga>() {
