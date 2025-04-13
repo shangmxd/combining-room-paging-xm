@@ -31,9 +31,8 @@ class MainViewModel @Inject constructor(
     @ApplicationContext private val context: Context
 ) : ViewModel() {
 
-    val savedManga = viewModelScope.launch {
-        mangaRepository.getSavedManga()
-    }
+    val savedManga:LiveData<List<MangaData>> = mangaRepository.getSavedManga()
+
     val mangaResponse = Pager(
         PagingConfig(pageSize = 20, maxSize = 100),
         pagingSourceFactory = {
