@@ -1,5 +1,6 @@
 package com.example.roomandpagingwithxml.repository
 
+import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.roomandpagingwithxml.data.Manga
@@ -9,6 +10,7 @@ import java.lang.Exception
 class MangaPagingSource(private val mangaService: MangaService) : PagingSource<Int, Manga>() {
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Manga> {
         try {
+            Log.e("PAGING","Calling get all Mangas")
             val currentPagePosition = params.key ?: 1
             val result = mangaService.getAllMangas(currentPagePosition)
             return LoadResult.Page(

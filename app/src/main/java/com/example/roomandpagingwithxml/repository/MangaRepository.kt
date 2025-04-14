@@ -1,5 +1,6 @@
 package com.example.roomandpagingwithxml.repository
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import com.example.roomandpagingwithxml.database.MangaDao
 import com.example.roomandpagingwithxml.database.data.MangaData

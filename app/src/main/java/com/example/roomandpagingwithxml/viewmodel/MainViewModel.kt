@@ -31,7 +31,7 @@ class MainViewModel @Inject constructor(
     @ApplicationContext private val context: Context
 ) : ViewModel() {
 
-    val savedManga:LiveData<List<MangaData>> = mangaRepository.getSavedManga()
+    val savedManga = mangaRepository.getSavedManga()
 
     val mangaResponse = Pager(
         PagingConfig(pageSize = 20, maxSize = 100),
@@ -41,7 +41,7 @@ class MainViewModel @Inject constructor(
     ).liveData.cachedIn(viewModelScope)
 
     fun deleteMangaFromSaved(mangaData: MangaData){
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             mangaRepository.deleteSavedManga(mangaData)
         }
     }
